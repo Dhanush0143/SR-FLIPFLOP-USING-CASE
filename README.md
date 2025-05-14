@@ -1,7 +1,7 @@
 # SR-FLIPFLOP-USING-CASE
-## NAME:DHANUSH P
-## REG NO:212223230042
-## DATE:
+## NAME : DHANUSH P
+## REG NO : 212223230042
+## DATE :
 **AIM:**
 
 To implement  SR flipflop using verilog and validating their functionality using their functional tables
@@ -35,66 +35,42 @@ By using three variable K-Map, we can get the simplified expression for next sta
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=S+R′Q(t)Q(t+1)=S+R′Q(t)
 
 **Procedure**
+Open Quartus Prime and create a new Verilog project.
 
-1.Type the program in Quartus software.
+Write the Verilog module for SR Flip-Flop using the derived Boolean expression.
 
-2.Compile and run the program.
+Create a testbench to provide clock, S, and R input values and observe the outputs.
 
-3.Generate the RTL schematic and save the logic diagram.
+Compile the design and run a functional simulation using ModelSim.
 
-4.Create nodes for inputs and outputs to generate the timing diagram.
+Observe the waveform to verify the flip-flop behavior against the truth table.
 
-5.For different input combinations generate the timing diagram.
-
-
+Record and document the outputs.
 
 **PROGRAM**
 
 ```
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
-Developed by: GAUTHAM KRISHNA S
-RegisterNumber: 212223240036
-*/
-```
-
-```VHDL
-
-
-module EXP_6(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
-  input s,r,clk, reset;
-  output reg q;
-  output q_bar;
- 
-  always@(posedge clk) begin // for synchronous reset
-    if(!reset)       
-			q <= 0;
-    else 
-  begin
-      case({s,r})       
-	     2'b00: q <= q;    // No change
-        2'b01:q<=1'b0;   // Write logic for reset
-        2'b10:q<=1'b1;   // Write logic for set
-        2'b11:q<=1'bx;   // Write logic for Invalid state
-      endcase
-    end
-  end
-  assign q_bar = ~q;
+module exp6(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=~Q;
+end
 endmodule
-
-
-
 ```
 
 **RTL LOGIC FOR FLIPFLOPS**
 
-![image](https://github.com/gauthamkrishna7/SR-FLIPFLOP-USING-CASE/assets/141175025/0e68dc11-0857-4852-b8f3-2abab4b07d53)
-
+![Screenshot 2025-04-30 102852](https://github.com/user-attachments/assets/96772af9-aae9-4047-a349-04d83ba190d3)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![image](https://github.com/gauthamkrishna7/SR-FLIPFLOP-USING-CASE/assets/141175025/4469ba2a-14ec-413a-88c1-66037631f5d2)
-
+![Screenshot 2025-04-30 103529](https://github.com/user-attachments/assets/0903df37-a7c4-4f1d-8987-0cbd3493fae0)
 
 **RESULTS**
-
-Thus the program to implement a SR flipflop using verilog and validating their functionality using their functional tables is successfully completed.
+The SR flip-flop was successfully implemented, simulated, and its functionality was verified using Quartus Prime.

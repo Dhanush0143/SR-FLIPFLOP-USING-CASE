@@ -1,7 +1,7 @@
 # SR-FLIPFLOP-USING-CASE
 ## NAME:DHANUSH P
 ## REG NO:212223230042
-## DATE;
+## DATE:
 **AIM:**
 
 To implement  SR flipflop using verilog and validating their functionality using their functional tables
